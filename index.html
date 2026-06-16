@@ -3,220 +3,759 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Allan Andrei dela Paz - Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Allan Andrei dela Paz — Full-Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --ink-muted: #5c5c5c;
+      --ink-faint: #9a9a9a;
+      --surface: #ffffff;
+      --surface-alt: #f7f6f3;
+      --border: #e4e2db;
+      --accent: #1a5c3a;
+      --accent-light: #e8f2ec;
+      --accent-mid: #2d7a52;
+      --tag-bg: #f0ede6;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      background-color: #f5f5f5;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--surface-alt);
     }
-    h1, h2, h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 1px;
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
-    .neo-border {
-      border: 4px solid black;
-      box-shadow: 6px 6px 0px black;
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
     }
-    html {
-      scroll-behavior: smooth;
+    nav .inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
     }
-    /* Go to top button */
+    nav .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+    nav ul a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    nav ul a:hover { color: var(--ink); text-decoration: none; }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0 72px;
+    }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-mid);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-desc {
+      font-size: 18px;
+      color: var(--ink-muted);
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 6px;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover { background: #333; text-decoration: none; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      letter-spacing: 0.01em;
+    }
+    .btn-ghost:hover { background: var(--surface-alt); text-decoration: none; }
+
+    /* ── Section ── */
+    section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 40px;
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--ink-muted);
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    .about-stat {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .about-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px;
+      line-height: 1;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .about-stat-label {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    /* ── Experience ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-meta {
+      padding-top: 4px;
+    }
+    .timeline-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .timeline-company {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+    .timeline-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .timeline-body {
+      font-size: 15px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+    .timeline-bullets {
+      list-style: none;
+      padding: 0;
+      margin-top: 12px;
+    }
+    .timeline-bullets li {
+      font-size: 14px;
+      color: var(--ink-muted);
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+    .timeline-bullets li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent-mid);
+      font-size: 13px;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .skill-item {
+      background: var(--surface);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .skill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .skill-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s;
+    }
+    .project-card:hover { border-color: var(--accent-mid); }
+    .project-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .project-name {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .tag {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--tag-bg);
+      color: var(--ink-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-intro {
+      font-size: 17px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 14px; }
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color 0.15s;
+    }
+    .contact-link-item:hover { border-color: var(--accent-mid); text-decoration: none; color: var(--accent); }
+    .contact-link-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .contact-availability {
+      background: var(--accent-light);
+      border: 1px solid #b2d9c2;
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .avail-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 8px;
+    }
+    .avail-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .avail-text {
+      font-size: 14px;
+      color: #2d6445;
+      line-height: 1.6;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer span { color: rgba(255,255,255,0.85); }
+
+    /* ── Back to top ── */
     #goTop {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 28px;
+      right: 28px;
       display: none;
-      z-index: 50;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+    }
+    #goTop.visible { display: flex; }
+
+    /* ── Education cards ── */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .edu-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .edu-degree { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .edu-school { font-size: 14px; color: var(--ink-muted); margin-bottom: 4px; }
+    .edu-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--ink-faint);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .about-grid, .contact-grid, .projects-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      nav ul { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="bg-yellow-300 neo-border p-8 text-center">
-  <h1 class="text-6xl font-bold uppercase">Allan Andrei dela Paz</h1>
-  <p class="mt-2 text-lg font-semibold">Full-Stack Developer | Oracle PL/SQL | ASP.NET</p>
-</header>
-
-<!-- NAVIGATION -->
-<nav class="bg-white neo-border mt-6 mx-auto max-w-5xl flex flex-wrap justify-center gap-6 py-4 font-bold uppercase">
-  <a href="#about" class="hover:underline">About</a>
-  <a href="#skills" class="hover:underline">Skills</a>
-  <a href="#projects" class="hover:underline">Projects</a>
-  <a href="#hobbies" class="hover:underline">Hobbies</a>
-  <a href="#contact" class="hover:underline">Contact</a>
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <span class="brand">allan.dev</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
+<!-- HERO -->
+<div class="hero">
+  <div class="wrapper">
+    <p class="hero-eyebrow">Full-Stack Developer · Metro Manila, PH</p>
+    <h1>Allan Andrei<br><em>dela Paz</em></h1>
+    <p class="hero-desc">
+      Building reliable enterprise software for over a decade — specializing in ASP.NET, Oracle PL/SQL, and compliance-critical systems for the insurance industry.
+    </p>
+    <div class="hero-links">
+      <a href="#contact" class="btn-primary">Get in touch →</a>
+      <a href="https://github.com/allan-andrei" target="_blank" class="btn-ghost">View GitHub</a>
+      <a href="https://www.linkedin.com/in/allan-andrei-dela-paz-188135149/" target="_blank" class="btn-ghost">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
 <!-- ABOUT -->
-<section id="about" class="max-w-5xl mx-auto mt-10 p-6 bg-pink-300 neo-border">
-  <h2 class="text-4xl mb-4">About Me</h2>
-  <p class="text-lg">
-    I’m a passionate software developer with a knack for building efficient, scalable systems. 
-    I specialize in ASP.NET, Oracle PL/SQL, and creating tools that make processes faster and smarter.
-    Outside of work, I love exploring new tech, tinkering with game mods, and improving user experiences.
-  </p>
-</section>
-
-<!-- EDUCATION & EXPERIENCE -->
-<section id="background" class="max-w-5xl mx-auto mt-10 p-6 bg-teal-300 neo-border">
-  <h2 class="text-4xl mb-6">Education & Experience</h2>
-
-  <div class="grid md:grid-cols-2 gap-6">
-
-    <!-- WORK EXPERIENCE -->
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-4">Work Experience</h3>
-
-      <div class="mb-4">
-        <p class="font-bold">In-House Software Developer</p>
-        <p class="italic">First Life Insurance</p>
-        <p class="text-sm mb-2">2018 – Present</p>
-        <ul class="list-disc list-inside text-sm">
-          <li>Develop and maintain internal insurance systems using ASP.NET, C#, and Oracle PL/SQL</li>
-          <li>Designed and enhanced core systems such as ILIFE and AMLC Compliance System</li>
-          <li>Implemented business rules, reporting, and compliance features</li>
-          <li>Supported production issues, UAT testing, and system enhancements</li>
-          <li>Participated in legacy system improvements and migration to .NET</li>
-        </ul>
+<section id="about" style="background: var(--surface);">
+  <div class="wrapper">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">About me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a software developer based in the Philippines with over 10 years of professional experience designing and maintaining enterprise-grade applications. My core expertise lies in the .NET ecosystem and Oracle PL/SQL — environments where correctness, auditability, and performance all matter.
+        </p>
+        <p>
+          At First Life Insurance, I've been the primary developer behind mission-critical systems including a regulatory compliance platform submitted directly to the Anti-Money Laundering Council (AMLC). I take pride in translating complex business and compliance requirements into clean, maintainable code.
+        </p>
+        <p>
+          Outside of enterprise work, I enjoy tinkering — from Unreal Engine 5 experiments to Gunpla builds to modding PC games.
+        </p>
       </div>
-
-  <!-- AGC INNOVATION -->
-      <div class="mb-4">
-		<p class="font-bold">Software Developer</p>
-		<p class="italic">AGC Innovation</p>
-		<p class="text-sm mb-2">2015 – 2018</p>
-		<ul class="list-disc list-inside text-sm">
-		  <li>Developed and maintained business applications including an Invoice Management System</li>
-		  <li>Worked with ASP.NET, C#, SQL Server, HTML, CSS, and JavaScript</li>
-		  <li>Implemented billing, reporting, and data validation features</li>
-		  <li>Collaborated with stakeholders to translate business requirements into technical solutions</li>
-		  <li>Provided system support, enhancements, and bug fixes</li>
-		</ul>
-	  </div>
-    </div>
-
-    <!-- EDUCATION -->
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-4">Education</h3>
-
-      <div class="mb-4">
-        <p class="font-bold">Bachelor of Science in Information Technology</p>
-        <p class="italic">Polytechnic University of the Philippines</p>
-        <p class="text-sm">2014</p>
+      <div>
+        <div class="stats-grid">
+          <div class="about-stat">
+            <span class="about-stat-num">10+</span>
+            <span class="about-stat-label">Years professional experience</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-num">5+</span>
+            <span class="about-stat-label">Major systems delivered</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-num">2</span>
+            <span class="about-stat-label">Industries served</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-num">PUP</span>
+            <span class="about-stat-label">BSIT graduate, 2014</span>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrapper">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Work experience</h2>
+    <div class="timeline">
 
-<!-- SKILLS -->
-<section id="skills" class="max-w-5xl mx-auto mt-10 p-6 bg-green-300 neo-border">
-  <h2 class="text-4xl mb-6">Skills</h2>
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <div class="bg-white neo-border p-4 text-center font-bold">HTML5 / CSS3</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">JavaScript / jQuery</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">C# / ASP.NET</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">Oracle PL/SQL</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">SQL Server</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">DevExpress for ASP.NET</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">Git / Version Control</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">Responsive Web Design</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">Tailwind / Flowbite</div>
-    <div class="bg-white neo-border p-4 text-center font-bold">Google MDC</div>
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-period">2018 – Present</span>
+          <span class="timeline-company">First Life Insurance</span>
+        </div>
+        <div>
+          <p class="timeline-title">In-House Software Developer</p>
+          <p class="timeline-body">Core developer for the company's internal software infrastructure, handling everything from feature development to production support on compliance-sensitive systems.</p>
+          <ul class="timeline-bullets">
+            <li>Designed and maintained ILIFE, the company's primary insurance operations platform, using ASP.NET, C#, and Oracle PL/SQL</li>
+            <li>Built the AMLC Compliance System — automating suspicious transaction detection and direct regulatory report submission to the Anti-Money Laundering Council</li>
+            <li>Developed a Pickup and Delivery scheduling and monitoring system for internal logistics</li>
+            <li>Led UAT coordination, production issue resolution, and legacy system migration to .NET</li>
+            <li>Implemented business rules, reporting pipelines, and compliance-mandated audit features</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-period">2015 – 2018</span>
+          <span class="timeline-company">AGC Innovation</span>
+        </div>
+        <div>
+          <p class="timeline-title">Software Developer</p>
+          <p class="timeline-body">Full-stack developer on business applications serving internal operations teams and external stakeholders across billing and invoice workflows.</p>
+          <ul class="timeline-bullets">
+            <li>Built and maintained an Invoice Management System with billing, reporting, and data validation modules</li>
+            <li>Worked across the stack with ASP.NET, C#, SQL Server, HTML, CSS, and JavaScript</li>
+            <li>Translated stakeholder requirements into technical specifications and delivered working software</li>
+            <li>Provided ongoing system support, bug fixes, and iterative enhancements post-launch</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Education inline -->
+    <div style="margin-top: 48px;">
+      <p class="section-label" style="margin-bottom: 16px;">Education</p>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <p class="edu-degree">Bachelor of Science in Information Technology</p>
+          <p class="edu-school">Polytechnic University of the Philippines</p>
+          <p class="edu-year">Class of 2014</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="max-w-5xl mx-auto mt-10 p-6 bg-blue-300 neo-border">
-  <h2 class="text-4xl mb-6">Projects</h2>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-2">ILIFE</h3>
-      <p>First Life Insurance’s in-house system, designed to handle core business processes and improve operational efficiency.</p>
-    </div>
-	
-    <div class="bg-white neo-border p-4">
-	  <h3 class="font-bold text-2xl mb-2">AMLC Compliance System</h3>
-	  <p>
-		An internal compliance system designed to detect suspicious insurance transactions,
-		generate required reports, and submit them directly to the Anti-Money Laundering Council (AMLC)
-		in compliance with Philippine regulatory requirements.
-	  </p>
-	</div>
-	
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-2">Pickup and Delivery System</h3>
-      <p>Scheduling, maintenance, and monitoring system for pickups and deliveries, developed for First Life Insurance.</p>
-    </div>
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-2">ASAPHIL’s HR and Payroll System</h3>
-      <p>Human Resources and Payroll system tailored for ASAPHIL, streamlining employee management and payroll processing.</p>
-    </div>
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-2">AGC Innovation’s Invoice System</h3>
-      <p>Invoice management platform for AGC Innovation, built to ensure accurate billing, tracking, and reporting.</p>
+<section id="projects" style="background: var(--surface);">
+  <div class="wrapper">
+    <p class="section-label">Work</p>
+    <h2 class="section-title">Featured projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <span class="project-tag">Enterprise · Insurance</span>
+        <p class="project-name">ILIFE</p>
+        <p class="project-desc">First Life Insurance's core operational platform. Handles policy management, business rule enforcement, and internal workflows that power the company's day-to-day operations.</p>
+        <div class="project-stack">
+          <span class="tag">ASP.NET</span>
+          <span class="tag">C#</span>
+          <span class="tag">Oracle PL/SQL</span>
+          <span class="tag">DevExpress</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Compliance · Regulatory</span>
+        <p class="project-name">AMLC Compliance System</p>
+        <p class="project-desc">Internal compliance platform that detects suspicious insurance transactions, generates structured reports, and submits them directly to the Anti-Money Laundering Council in accordance with Philippine regulatory requirements.</p>
+        <div class="project-stack">
+          <span class="tag">ASP.NET</span>
+          <span class="tag">C#</span>
+          <span class="tag">Oracle PL/SQL</span>
+          <span class="tag">Reporting</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Operations · Logistics</span>
+        <p class="project-name">Pickup & Delivery System</p>
+        <p class="project-desc">Scheduling, maintenance, and real-time monitoring system for First Life Insurance's internal pickup and delivery operations. Streamlines coordination and reduces manual tracking overhead.</p>
+        <div class="project-stack">
+          <span class="tag">ASP.NET</span>
+          <span class="tag">C#</span>
+          <span class="tag">Oracle PL/SQL</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">HR · Payroll</span>
+        <p class="project-name">ASAPHIL HR & Payroll System</p>
+        <p class="project-desc">End-to-end human resources and payroll system for ASAPHIL. Covers employee records management, leave tracking, and automated payroll computation tailored to local labor regulations.</p>
+        <div class="project-stack">
+          <span class="tag">ASP.NET</span>
+          <span class="tag">C#</span>
+          <span class="tag">SQL Server</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Finance · Billing</span>
+        <p class="project-name">AGC Invoice Management System</p>
+        <p class="project-desc">Invoice management platform for AGC Innovation. Handles accurate billing workflows, invoice tracking, and financial reporting — reducing manual errors and improving billing cycle time.</p>
+        <div class="project-stack">
+          <span class="tag">ASP.NET</span>
+          <span class="tag">C#</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- HOBBIES -->
-<section id="hobbies" class="max-w-5xl mx-auto mt-10 p-6 bg-orange-300 neo-border">
-  <h2 class="text-4xl mb-6">Hobbies & Interests</h2>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-2">Gaming</h3>
-      <ul class="list-disc list-inside">
-        <li><strong>League of Legends:</strong> ARAM & Hyper Roll</li>
-        <li><strong>Ragnarok M: Classic</strong> — Sniper main</li>
-        <li><strong>Mini Legends 4WD</strong> — Racing customization</li>
-        <li><strong>Dave the Diver</strong> — Modding for multiplayer</li>
-      </ul>
-    </div>
-    <div class="bg-white neo-border p-4">
-      <h3 class="font-bold text-2xl mb-2">Creative & Tech Hobbies</h3>
-      <ul class="list-disc list-inside">
-        <li>Gunpla (Gundam plastic model) building & posing</li>
-        <li>Exploring new game engines (Unreal Engine 5)</li>
-        <li>Customizing and modding PC games</li>
-        <li>Experimenting with UI/UX design concepts</li>
-      </ul>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrapper">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Technical skills</h2>
+    <div class="skills-grid">
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">C# / ASP.NET</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Oracle PL/SQL</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">SQL Server</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">HTML5 / CSS3</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">JavaScript / jQuery</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">DevExpress for ASP.NET</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Tailwind CSS</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Responsive Web Design</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Git / Version Control</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Google MDC</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Unreal Engine 5</span></div>
+      <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">UI/UX Design Concepts</span></div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="max-w-5xl mx-auto mt-10 p-6 bg-purple-300 neo-border">
-  <h2 class="text-4xl mb-4">Contact</h2>
-  <p>Email: <a href="mailto:allan@example.com" class="underline">allanandrei.delapaz@outlook.com</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/allan-andrei-dela-paz-188135149/" target="_blank" class="underline">linkedin.com/in/allan-andrei-dela-paz-188135149</a></p>
-  <p>GitHub: <a href="https://github.com/allan-andrei" target="_blank" class="underline">github.com/allan-andrei</a></p>
+<section id="contact" style="background: var(--surface);">
+  <div class="wrapper">
+    <p class="section-label">Let's connect</p>
+    <h2 class="section-title">Get in touch</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">
+          Open to discussing new opportunities, consulting work, or just connecting with other developers in the PH tech community. Reach out through any of the channels below.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:allanandrei.delapaz@outlook.com" class="contact-link-item">
+            <span>
+              <span class="contact-link-label">Email</span>
+              allanandrei.delapaz@outlook.com
+            </span>
+          </a>
+          <a href="https://www.linkedin.com/in/allan-andrei-dela-paz-188135149/" target="_blank" class="contact-link-item">
+            <span>
+              <span class="contact-link-label">LinkedIn</span>
+              Allan Andrei dela Paz
+            </span>
+          </a>
+          <a href="https://github.com/allan-andrei" target="_blank" class="contact-link-item">
+            <span>
+              <span class="contact-link-label">GitHub</span>
+              github.com/allan-andrei
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-availability">
+        <p class="avail-title"><span class="avail-dot"></span>Available for opportunities</p>
+        <p class="avail-text">Based in the Philippines, open to remote or on-site roles in Metro Manila. Interested in enterprise application development, backend engineering, and systems that require strong attention to correctness and compliance.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-black text-white text-center p-4 mt-10 neo-border">
-  &copy; 2025 Allan Andrei dela Paz — Designed in Neo-Brutalism
+<footer>
+  <div class="wrapper">
+    &copy; 2026 <span>Allan Andrei dela Paz</span> · Full-Stack Developer · Manila, PH
+  </div>
 </footer>
 
-<!-- GO TO TOP BUTTON -->
-<button id="goTop" onclick="window.scrollTo({top:0, behavior:'smooth'});" 
-  class="bg-yellow-300 neo-border px-4 py-2 font-bold uppercase">
-  ↑ Top
-</button>
+<!-- BACK TO TOP -->
+<button id="goTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script>
-  const goTop = document.getElementById("goTop");
-  window.addEventListener("scroll", () => {
-    if (document.documentElement.scrollTop > 200) {
-      goTop.style.display = "block";
-    } else {
-      goTop.style.display = "none";
-    }
+  const goTop = document.getElementById('goTop');
+  window.addEventListener('scroll', () => {
+    goTop.classList.toggle('visible', window.scrollY > 300);
   });
 </script>
 </body>
